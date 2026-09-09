@@ -94,7 +94,7 @@ describe("planInstall", () => {
     const installedHook = join(homeDir, ".focus-bell", "hook.js");
     for (const event of EVENTS) {
       expect(after.hooks[event]).toHaveLength(1);
-      expect(after.hooks[event][0].command).toContain(installedHook);
+      expect(after.hooks[event][0].command).toContain(installedHook.replace(/\\/g, "/"));
     }
     expect(readFileSync(installedHook, "utf8")).toBe(readFileSync(bundledHookPath, "utf8"));
 
