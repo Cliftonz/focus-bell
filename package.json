@@ -4,6 +4,10 @@
   "version": "0.1.0",
   "publisher": "zacclifton",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Cliftonz/focus-bell.git"
+  },
   "engines": {
     "vscode": "^1.90.0"
   },
@@ -67,7 +71,7 @@
     "build": "node esbuild.mjs",
     "test": "vitest run",
     "test:e2e": "npm run build && node test/e2e/runTest.js",
-    "package": "npm run build && vsce package --allow-missing-repository",
+    "package": "npm run build && vsce package",
     "vscode:prepublish": "npm run build"
   },
   "devDependencies": {

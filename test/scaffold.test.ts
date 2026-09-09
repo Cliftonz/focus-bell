@@ -59,7 +59,11 @@ describe("package.json scaffold", () => {
     expect(pkg.scripts.build).toBeDefined();
     expect(pkg.scripts.test).toBeDefined();
     expect(pkg.scripts["test:e2e"]).toBe("npm run build && node test/e2e/runTest.js");
-    expect(pkg.scripts.package).toBe("npm run build && vsce package --allow-missing-repository");
+    expect(pkg.scripts.package).toBe("npm run build && vsce package");
+  });
+
+  it("points repository at the GitHub repo", () => {
+    expect(pkg.repository.url).toBe("https://github.com/Cliftonz/focus-bell.git");
   });
 
   it("exposes the installer binary", () => {
