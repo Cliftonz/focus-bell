@@ -1,0 +1,84 @@
+{
+  "name": "focus-bell",
+  "displayName": "Focus Bell",
+  "version": "0.1.0",
+  "publisher": "zacclifton",
+  "license": "MIT",
+  "engines": {
+    "vscode": "^1.90.0"
+  },
+  "main": "./dist/extension.js",
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onStartupFinished"
+  ],
+  "bin": {
+    "focus-bell": "cli/install.js"
+  },
+  "contributes": {
+    "commands": [
+      { "command": "focusBell.setPrimary", "title": "Focus Bell: Set Primary" },
+      { "command": "focusBell.setSecondary", "title": "Focus Bell: Set Secondary" },
+      { "command": "focusBell.setTertiary", "title": "Focus Bell: Set Tertiary" },
+      { "command": "focusBell.clearTier", "title": "Focus Bell: Clear Tier" },
+      { "command": "focusBell.doctor", "title": "Focus Bell: Doctor" },
+      { "command": "focusBell.testSound", "title": "Focus Bell: Test Sound" },
+      { "command": "focusBell.showLog", "title": "Focus Bell: Show Event Log" },
+      { "command": "focusBell.acknowledge", "title": "Focus Bell: Acknowledge" },
+      { "command": "focusBell.markCloud", "title": "Focus Bell: Mark Conversation As Cloud" }
+    ],
+    "keybindings": [
+      { "command": "focusBell.setPrimary", "key": "ctrl+alt+1", "mac": "cmd+alt+1" },
+      { "command": "focusBell.setSecondary", "key": "ctrl+alt+2", "mac": "cmd+alt+2" },
+      { "command": "focusBell.setTertiary", "key": "ctrl+alt+3", "mac": "cmd+alt+3" },
+      { "command": "focusBell.clearTier", "key": "ctrl+alt+0", "mac": "cmd+alt+0" }
+    ],
+    "configuration": {
+      "title": "Focus Bell",
+      "properties": {
+        "focusBell.tiers": {
+          "type": "object",
+          "default": {
+            "primary": { "theme": "loud", "repeat": true, "respectFocusMute": false },
+            "secondary": { "theme": "plain", "repeat": false, "respectFocusMute": true },
+            "tertiary": { "theme": null, "repeat": false, "respectFocusMute": true }
+          }
+        },
+        "focusBell.defaultTier": {
+          "type": "string",
+          "enum": ["primary", "secondary", "tertiary"],
+          "default": "secondary"
+        },
+        "focusBell.idleMinutes": {
+          "type": "number",
+          "minimum": 1,
+          "default": 10
+        },
+        "focusBell.debug": {
+          "type": "boolean",
+          "default": false
+        }
+      }
+    }
+  },
+  "scripts": {
+    "build": "node esbuild.mjs",
+    "test": "vitest run",
+    "test:e2e": "npm run build && node test/e2e/runTest.js",
+    "package": "npm run build && vsce package --allow-missing-repository",
+    "vscode:prepublish": "npm run build"
+  },
+  "devDependencies": {
+    "@types/mocha": "^10.0.10",
+    "@types/node": "^26.5.0",
+    "@types/vscode": "^1.90.0",
+    "@vscode/test-electron": "^3.1.0",
+    "@vscode/vsce": "^3.9.2",
+    "esbuild": "^0.28.2",
+    "mocha": "^12.0.0",
+    "typescript": "^5.9.3",
+    "vitest": "^5.0.0"
+  }
+}

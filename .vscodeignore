@@ -1,0 +1,7 @@
+**
+!dist/**
+!cli/**
+!package.json
+!LICENSE
+!README.md
+.vscode-test

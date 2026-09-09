@@ -1,0 +1,15 @@
+{
+  "conversation_id": "conv-1",
+  "generation_id": "gen-1",
+  "model": "claude",
+  "cursor_version": "3.19.13",
+  "workspace_roots": [
+    "/Users/zac/code/rmx"
+  ],
+  "user_email": null,
+  "transcript_path": "/Users/zac/.cursor/t/transcript.md",
+  "hook_event_name": "beforeShellExecution",
+  "command": "ls",
+  "cwd": "/w",
+  "sandbox": false
+}
